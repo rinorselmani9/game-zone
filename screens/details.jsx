@@ -2,10 +2,11 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { globalStyles } from "../styles/global";
 
-export default function Details(){
+const Details = () =>{
     return (
         <View style={globalStyles.container}>
             <Text>Details Screen</Text>
         </View>
     )
 }
+export default Details
