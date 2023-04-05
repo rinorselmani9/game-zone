@@ -1,11 +1,13 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Button } from "react-native";
 import { globalStyles } from "../styles/global";
+import { useRoute } from "@react-navigation/native";
 
-const Details = () =>{
+const Details = ({navigation, route:{params:{item}}}) =>{
+    
     return (
         <View style={globalStyles.container}>
-            <Text>Details Screen</Text>
+            <Text>{item.title}</Text>
         </View>
     )
 }
