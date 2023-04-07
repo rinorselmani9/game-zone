@@ -11,6 +11,20 @@ export const globalStyles = StyleSheet.create({
         marginTop:16,
         borderTopWidth:1,
         borderTopColor:'#eee'
+    },
+    modal:{
+        flex:1,
+        flexDirection:'column',
+        alignItems:'center',
+        paddingTop:60
+    },
+    modalToggle:{
+        marginBottom:10,
+        borderWidth:1,
+        borderColor:'#f2f2f2',
+        padding:10,
+        borderRadius:10,
+        alignSelf:'center'
     }
 })
 
