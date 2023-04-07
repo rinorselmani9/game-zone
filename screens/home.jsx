@@ -1,10 +1,11 @@
 import React, { useState } from "react"
-import { StyleSheet, View, Text, FlatList, Button } from "react-native"
+import { View, Text, FlatList, TouchableWithoutFeedback, Keyboard } from "react-native"
 import { globalStyles } from "../styles/global"
 import { TouchableOpacity } from "react-native-gesture-handler"
 import Card from "../shared/Card"
 import { Modal } from "react-native"
 import { MaterialIcons } from "@expo/vector-icons"
+import ReviewForm from "./reviewForm"
 
 const Home = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false)
@@ -13,14 +14,22 @@ const Home = ({ navigation }) => {
     { title: "Gotta catch them all", rating: 3, body: "lorem ipsum", key: 2 },
     { title: "Not so final", rating: 2, body: "lorem ipsum", key: 3 },
   ])
-
+  const addReview = (review) => {
+    review.key = Math.random().toString()
+    setReviews((prevReviews)=>{
+      return [review,...prevReviews]
+    })
+    setModalVisible(false)
+  }
   return (
     <View style={globalStyles.container}>
       <Modal visible={modalVisible} animationType='slide'>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={globalStyles.modal}>
           <MaterialIcons name='close' size={24} onPress={() => setModalVisible(false)} style={globalStyles.modalToggle}/>
-          <Text>Hello from the Modal</Text>
+          <ReviewForm addReview={addReview}/>
         </View>
+        </TouchableWithoutFeedback>
       </Modal>
       <MaterialIcons name='add' size={24} onPress={() => setModalVisible(true)} style={globalStyles.modalToggle}/>
       <FlatList
